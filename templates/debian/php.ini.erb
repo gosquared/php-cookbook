@@ -781,7 +781,7 @@ default_mimetype = "text/html"
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; UNIX: "/path1:/path2"
-;include_path = ".:/usr/share/php"
+;include_path = ".:/usr/share/php:<%= node['php']['include_paths'].join(':') %>"
 ;
 ; Windows: "\path1;\path2"
 ;include_path = ".;c:\php\includes"

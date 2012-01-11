@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-pkgs = value_for_platform(
+dependencies = value_for_platform(
   [ "centos", "redhat", "fedora" ] => {
     "default" => %w{ php53 php53-devel php53-cli php-pear }
   },
@@ -28,10 +28,8 @@ pkgs = value_for_platform(
   "default" => %w{ php5-cgi php5 php5-dev php5-cli php-pear }
 )
 
-pkgs.each do |pkg|
-  package pkg do
-    action :install
-  end
+dependencies.each do |name|
+  package name
 end
 
 template "#{node['php']['conf_dir']}/php.ini" do

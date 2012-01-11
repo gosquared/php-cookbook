@@ -84,3 +84,5 @@ default['php']['configure_options'] = %W{--prefix=#{php['prefix_dir']}
                                           --with-sqlite3
                                           --with-pdo-mysql=mysqlnd
                                           --with-pdo-sqlite}
+
+default['php']['include_paths'] = []
