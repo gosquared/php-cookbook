@@ -1,7 +1,6 @@
 package "php5-fpm"
 
 service "php5-fpm" do
-  supports :start => true, :stop => true, :restart => true, :reload => true, :status => true
   action :enable
 end
 
@@ -15,7 +14,7 @@ template "/etc/php5/fpm/php-fpm.conf" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, resources(:service => "php5-fpm")
+  notifies :restart, resources(:service => "php5-fpm"), :delayed
 end
 
 template "/etc/php5/fpm/pool.d/www.conf" do
@@ -24,16 +23,15 @@ template "/etc/php5/fpm/pool.d/www.conf" do
   owner "root"
   group "root"
   mode "0644"
-  notifies :restart, resources(:service => "php5-fpm")
+  notifies :restart, resources(:service => "php5-fpm"), :delayed
 end
 
 template "/etc/init.d/php5-fpm" do
   source "php5-fpm.sysv.erb"
   mode "0755"
-  notifies :restart, resources(:service => "php5-fpm")
+  notifies :restart, resources(:service => "php5-fpm"), :delayed
 end
 
 service "php5-fpm" do
-  supports :start => true, :stop => true, :restart => true, :reload => true, :status => true
   action :start
 end

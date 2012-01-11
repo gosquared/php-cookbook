@@ -42,9 +42,9 @@ else
   default['php']['fpm_group']     = 'www-data'
 end
 
-default['php']['url'] = 'http://us.php.net/distributions'
-default['php']['version'] = '5.3.6'
-default['php']['checksum'] = '30ae880f22e3ee93eccc9b80e3c58b0d6364d139bb4366dcc27f2fab658d3198'
+default['php']['url']        = 'http://us.php.net/distributions'
+default['php']['version']    = '5.3.9'
+default['php']['checksum']   = '4bc54e1aa9010f09d2c6597844c984adecf9e1153c913a853c7725905ddb4dd7'
 default['php']['prefix_dir'] = '/usr/local'
 
 default['php']['configure_options'] = %W{--prefix=#{php['prefix_dir']}
