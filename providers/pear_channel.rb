@@ -35,7 +35,7 @@ action :discover do
 end
 
 action :add do
-  if !@@skip && !exists?
+  if Chef::Extensions.wan_up? && !exists?
     Chef::Log.info("Adding pear channel #{@new_resource} from #{@new_resource.channel_xml}")
     execute "pear channel-add #{@new_resource.channel_xml}" do
       action :run
@@ -45,7 +45,7 @@ action :add do
 end
 
 action :update do
-  if !@@skip && exists?
+  if Chef::Extensions.wan_up? && exists?
     update_needed = false
     begin
       updated_needed = true if shell_out("pear search -c #{@new_resource.channel_name} NNNNNN").stdout =~ /channel-update/
@@ -76,12 +76,6 @@ def load_current_resource
   @current_resource = Chef::Resource::PhpPearChannel.new(@new_resource.name)
   @current_resource.channel_name(@new_resource.channel_name)
   @current_resource
-
-  if Chef::Util.respond_to?(:wan_up?)
-    @@skip = Chef::Util.wan_up? ? false : true
-  else
-    @@skip = false
-  end
 end
 
 private

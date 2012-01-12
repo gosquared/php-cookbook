@@ -27,7 +27,7 @@ include Chef::Mixin::ShellOut
 # refactoring into core chef easy
 
 action :install do
-  unless @@skip
+  if Chef::Extensions.wan_up?
     # If we specified a version, and it's not the current version, move to the specified version
     if @new_resource.version != nil && @new_resource.version != @current_resource.version
       install_version = @new_resource.version
@@ -47,7 +47,7 @@ action :install do
 end
 
 action :upgrade do
-  unless @@skip
+  if Chef::Extensions.wan_up?
     if @current_resource.version != candidate_version
       orig_version = @current_resource.version || "uninstalled"
       Chef::Log.info("Upgrading #{@new_resource} version from #{orig_version} to #{candidate_version}")
@@ -111,12 +111,6 @@ def load_current_resource
     Chef::Log.debug("Current version is #{@current_resource.version}") if @current_resource.version
   end
   @current_resource
-
-  if Chef::Util.respond_to?(:wan_up?)
-    @@skip = Chef::Util.wan_up? ? false : true
-  else
-    @@skip = false
-  end
 end
 
 def current_installed_version
