@@ -2,7 +2,7 @@ maintainer        "Gerhard Lazu"
 maintainer_email  "gerhard@lazu.co.uk"
 license           "Apache 2.0"
 description       "Installs and maintains php and php modules"
-version           "2.0.0"
+version           "2.0.1"
 
 depends "build-essential"
 depends "xml"

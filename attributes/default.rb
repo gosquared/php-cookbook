@@ -86,3 +86,6 @@ default['php']['configure_options'] = %W{--prefix=#{php['prefix_dir']}
                                           --with-pdo-sqlite}
 
 default['php']['include_paths'] = []
+
+default[:php][:suhosin][:session_cryptdocroot] = "On"
+default[:php][:suhosin][:memory_limit] = "64M"
