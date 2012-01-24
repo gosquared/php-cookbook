@@ -29,10 +29,12 @@ dependencies = value_for_platform(
 )
 
 dependencies.each do |name|
-  package name
+  package name do
+    version "#{node[:php][:version]}*"
+  end
 end
 
-template "#{node['php']['conf_dir']}/php.ini" do
+template "#{node[:php][:conf_dir]}/php.ini" do
   source "php.ini.erb"
   owner "root"
   group "root"
