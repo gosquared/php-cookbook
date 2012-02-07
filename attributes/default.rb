@@ -43,8 +43,8 @@ else
 end
 
 default['php']['url']        = 'http://us.php.net/distributions'
-default['php']['version']    = '5.3.9'
-default['php']['checksum']   = '4bc54e1aa9010f09d2c6597844c984adecf9e1153c913a853c7725905ddb4dd7'
+default['php']['version']    = '5.3.10'
+default['php']['checksum']   = '816259e5ca7d0a7e943e56a3bb32b17f'
 default['php']['prefix_dir'] = '/usr/local'
 
 default['php']['configure_options'] = %W{--prefix=#{php['prefix_dir']}
