@@ -29,9 +29,7 @@ dependencies = value_for_platform(
 )
 
 dependencies.each do |name|
-  package name do
-    version "#{node[:php][:version]}*"
-  end
+  package name
 end
 
 template "#{node[:php][:conf_dir]}/php.ini" do
