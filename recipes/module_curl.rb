@@ -23,9 +23,7 @@ case node['platform']
 when "centos", "redhat", "fedora"
   # centos php compiled with curl
 when "debian", "ubuntu"
-  package "php5-curl" do
-    action :upgrade
-  end
+  package "php5-curl"
 end
 
 create_extension "curl" do
