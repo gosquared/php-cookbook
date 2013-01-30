@@ -29,17 +29,20 @@ when "centos", "redhat", "fedora"
   default['php']['ext_conf_dir']  = '/etc/php.d'
   default['php']['fpm_user']      = 'nobody'
   default['php']['fpm_group']     = 'nobody'
+  default['php']['fpm_listen']    = '127.0.0.1:9000'
   default['php']['ext_dir']       = "/usr/#{lib_dir}/php/modules"
 when "debian", "ubuntu"
   default['php']['conf_dir']      = '/etc/php5/cli'
   default['php']['ext_conf_dir']  = '/etc/php5/conf.d'
   default['php']['fpm_user']      = 'www-data'
   default['php']['fpm_group']     = 'www-data'
+  default['php']['fpm_listen']    = '127.0.0.1:9000'
 else
   default['php']['conf_dir']      = '/etc/php5/cli'
   default['php']['ext_conf_dir']  = '/etc/php5/conf.d'
   default['php']['fpm_user']      = 'www-data'
   default['php']['fpm_group']     = 'www-data'
+  default['php']['fpm_listen']    = '127.0.0.1:9000'
 end
 
 default['php']['url']        = 'http://us.php.net/distributions'
